@@ -7,7 +7,7 @@ entradas = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
 saidas = np.array([0, 0, 0, 1])
 
 # Inicializando os pesos e a taxa de aprendizagem
-pesos = np.array([0.0, 0.0])
+pesos = np.array([0.1, 0.1])
 taxaAprendizagem = 0.1
 
 # Função de ativação (step function)
@@ -29,16 +29,16 @@ def treinar():
     while erroTotal != 0:
         erroTotal = 0
         for i in range(len(saidas)):
-            saidaCalculada = calculaSaida(entradas[i]) #t entar garantir que é array usando funcao(np.asarray(entradas[i]))
+            saidaCalculada = calculaSaida(entradas[i])
             # Calcula o erro absoluto entre a saída calculada e a saída desejada
             erro = abs(saidas[i] - saidaCalculada)
             erroTotal += erro
             for j in range(len(pesos)):
                 # Atualiza os pesos usando a regra de aprendizado do perceptron
                 pesos[j] = pesos[j] + (taxaAprendizagem * entradas[i][j] * erro)
-                print('Peso atualizado ' + str(pesos[j]))
-
-        print('Total de erros: ' + str(erroTotal))
+                print("Peso atualizado: ", pesos[j])
+                
+        print("Total de Erros: ", erroTotal)
         print('\n')
 
 # Chamando a função de treinamento
